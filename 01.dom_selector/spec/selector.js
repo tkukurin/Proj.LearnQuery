@@ -38,9 +38,9 @@ describe('Selector', function() {
     expect(selectedElementsArray.length).toBe(expectedHTMLElementsArray.length);
 
     // We need to check for each element if it's in the expected result set because element order is not guaranteed
-    selectedElementsArray.forEach(function(element) {
-      expect(expectedHTMLElementsArray.indexOf(element)).not.toBe(-1);
-    });
+    for(var i = 0; i < selectedElementsArray.length; i++) {
+        expect(expectedHTMLElementsArray.indexOf(selectedElementsArray[i])).not.toBe(-1);
+    }
   });
 
   it('should select DOM elements with a given tag name', function() {
@@ -48,9 +48,9 @@ describe('Selector', function() {
     var selectedElementsArray = domSelector(tagName);
     var expectedHTMLElementsArray = $.makeArray($(tagName));
 
-    selectedElementsArray.forEach(function(element) {
-      expect(expectedHTMLElementsArray.indexOf(element)).not.toBe(-1);
-    });
+    for(var i = 0; i < selectedElementsArray.length; i++) {
+        expect(expectedHTMLElementsArray.indexOf(selectedElementsArray[i])).not.toBe(-1);
+    }
   });
 
   it('should throw an exception for invalid selector', function() {
