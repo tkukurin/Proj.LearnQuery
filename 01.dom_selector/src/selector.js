@@ -1,5 +1,8 @@
 var domSelector = function(selectors) {
   'use strict';
+  return Optional.of(selectors).map(parse).orElseGet(() => []);
 
-  //code goes here
+  function parse(selectors) {
+      return [];
+  }
 };

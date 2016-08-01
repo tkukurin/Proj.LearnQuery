@@ -53,7 +53,7 @@ describe('Selector', function() {
     });
   });
 
-  it('should throw an expection for invalid selector', function() {
+  it('should throw an exception for invalid selector', function() {
     expect(function() {
       domSelector(')(?/');
     }).toThrowError();
