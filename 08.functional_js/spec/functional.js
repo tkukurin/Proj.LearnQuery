@@ -126,4 +126,16 @@ describe('Selector', function() {
       expect(whenOrElseGetInvoked).toEqual(givenOrElseValue);
   });
 
+  it('should correctly wrap exceptions', function() {
+      // given
+      var givenThrowableValue = "givenThrowableValue";
+      var givenThrowingFunction = () => { throw givenThrowableValue; };
+
+      // when
+      var whenThrowableFunctionCalled = Optional.ofThrowable(() => givenThrowingFunction());
+
+      // then
+      expect(whenThrowableFunctionCalled.value).toEqual(givenThrowableValue);
+  });
+
 });

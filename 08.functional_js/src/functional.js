@@ -2,6 +2,8 @@ var Optional = function(value) {
   this.value = value;
 }
 
+var EMPTY_OPTIONAL = new Optional(null);
+
 Optional.prototype.map = function(mappingFunction) {
   if(this.isEmpty()) {
       return this;
@@ -49,11 +51,17 @@ Optional.prototype.orElse = function(executesIfValueIsNotPresentFunction) {
 }
 
 Optional.empty = function() {
-  return new Optional(null);
+  return EMPTY_OPTIONAL;
 }
 
 Optional.of = function(value) {
   return new Optional(value);
+}
+
+Optional.ofThrowable = function(functionWhichThrows) {
+    try { functionWhichThrows(); }
+    catch(err) { return new Optional(err); }
+    return Optional.empty();
 }
 
 Optional.prototype.isPresent = function() {

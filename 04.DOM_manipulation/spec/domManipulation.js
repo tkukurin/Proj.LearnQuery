@@ -62,7 +62,8 @@ describe('domManipulation', function() {
   it('should return a value of a given HTML non-select element', function() {
     var element = $('.creature')[0];
     var elementValue = dom.val(element);
-
+    console.log(elementValue);
+    console.log(element);
     expect(elementValue).toBe('unicorn');
 
     element.value = 'pikachu';

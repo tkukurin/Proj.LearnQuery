@@ -11,3 +11,7 @@ function requireAll() {
         require(arguments[i]);
     }
 }
+
+function ignoreThrowable(anyFunction) {
+    Optional.ofThrowable(anyFunction);
+}
