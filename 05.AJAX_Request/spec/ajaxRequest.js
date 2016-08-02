@@ -56,9 +56,9 @@ describe('AjaxRequest', function() {
       secretUnicorn: 'Glumpsy'
     };
 
-    var onFailure = function(xhr, status, responseText) {
+    var onFailure = function(xhr, status, rawData) {
       expect(status).toBe(404);
-      expect(responseText).toBe('page not found');
+      expect(rawData).toBe('page not found');
       expect(this).toBe(context);
       expect(this.secretUnicorn).toBe('Glumpsy');
     };
@@ -86,9 +86,9 @@ describe('AjaxRequest', function() {
       secretUnicorn: 'Glumpsy'
     };
 
-    var onSuccess = function(data, status, xhr) {
+    var onSuccess = function(xhr, status, jsonData) {
       expect(status).toBe(200);
-      expect(data.response).toBe('incredible cool things');
+      expect(jsonData.response).toBe('incredible cool things');
       expect(this).toBe(context);
       expect(this.secretUnicorn).toBe('Glumpsy');
     };
