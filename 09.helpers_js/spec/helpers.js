@@ -10,4 +10,10 @@ describe('CssClassManipulation', function() {
         require(null);
       }).toThrowError();
   });
+
+  it('should throw exception when one of elements is nonexistent.', function() {
+      expect(function() {
+        requireAll("givenExisting", null);
+      }).toThrowError();
+  });
 });

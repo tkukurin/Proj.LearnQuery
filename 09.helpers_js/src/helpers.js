@@ -5,3 +5,9 @@ function require(element, optionalElementName) {
         throw elementName + " should not be null.";
     }
 }
+
+function requireAll() {
+    for(var i = 0; i < arguments.length; i++) {
+        require(arguments[i]);
+    }
+}
