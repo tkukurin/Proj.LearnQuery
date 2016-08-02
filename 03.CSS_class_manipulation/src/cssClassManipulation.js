@@ -1,21 +1,30 @@
-var cssClass = (function() {
+var cssClass = function() {
   'use strict';
+};
 
-  function toggle(element, className) {
-      require(element);
+function removeClassAndReturnTrueIfSuccessful(element, desiredClass) {
+    var startingLength = element.className.length;
+    element.className = element.className.split(desiredClass).join("");
+    var endingLength = element.className.length;
 
-  }
+    return startingLength != endingLength;
+}
 
-  function has(element, className) {
-      
-  }
+cssClass.toggle = function(element, desiredClass) {
+    requireAll(element, desiredClass);
+    Optional.of(removeClassAndReturnTrueIfSuccessful(element, desiredClass))
+            .filter(successfulyRemovedClass => successfulyRemovedClass == false)
+            .ifPresent(val => cssClass.add(element, desiredClass));
+}
 
-  function addClass(element, className) {
+cssClass.has = function(element, desiredClass) {
+    return element.className.indexOf(desiredClass) >= 0;
+}
 
-  }
+cssClass.add = function(element, desiredClass) {
+    element.className += " " + desiredClass;
+}
 
-  function removeClass(element, className) {
-
-  }
-
-})();
+cssClass.remove = function(element, desiredClass) {
+    removeClassAndReturnTrueIfSuccessful(element, desiredClass);
+}
