@@ -9,9 +9,13 @@ var domSelector = function(selectors) {
 
   return Optional.of(selectors)
                  .map(selector => {
-                     var key = selector[0];
-                     return Optional.of(MAPPERS[key])
-                                    .map(fn => fn(selector.substring(1)))
-                                    .orElseGet(() => document.querySelectorAll(selector)) })
-                 .orElseGet(() => []);
+                     var selectorType = selector[0];
+                     return Optional.of(MAPPERS[selectorType])
+                                    .map(fn => fn(removePrefix(selector)))
+                                    .orElseGet(() => defaultQuery(selector))
+                 }).orElseGet(emptyArray);
 };
+
+function emptyArray() { return []; }
+function removePrefix(selector) { return selector.substring(1); }
+function defaultQuery(selector) { return document.querySelectorAll(selector); }

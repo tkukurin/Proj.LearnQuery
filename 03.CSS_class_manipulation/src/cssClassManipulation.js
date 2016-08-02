@@ -1,5 +1,18 @@
-var cssClass = (function() {
+var cssClass = (function(element, className) {
   'use strict';
 
-  // code goes here
+  require(element);
+
+  function toggle() {
+
+  }
+
+  function add() {
+
+  }
+
+  function remove() {
+
+  }
+
 })();

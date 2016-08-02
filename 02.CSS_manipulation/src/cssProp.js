@@ -1,16 +1,10 @@
 var cssProp = function(element, keyOrMap, valueIfPresent) {
   'use strict';
-  requireElementToBePresent(element);
+  require(element);
   return Optional.of(valueIfPresent)
                  .ifPresent(value => element.style[keyOrMap] = value)
                  .orElseGet(() => parseKeyOrMap(element, keyOrMap));
 };
-
-function requireElementToBePresent(element) {
-    if(element == null) {
-        throw "Element must not be null.";
-    }
-}
 
 function parseKeyOrMap(element, keyOrMap) {
     if(isMap(keyOrMap)) {
